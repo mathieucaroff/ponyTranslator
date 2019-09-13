@@ -1,0 +1,166 @@
+# %NOT YAML
+# ---
+# Word-continuing characters: [A-Za-z0-9'-]
+# -- all other characters are word-breaking.
+# The yaml must consist only of string-string key-value pairs. Having
+#   any structured value or structured key renders the file invalid.
+# Asterisks must be found in equal numbers on both sides of the rule and
+#   are wildcards for 0 or more word-continuing characters. Having
+#   unbalanced wildcards renders the rule file invalid.
+# Entries are matched word-breaking characters on both ends. You can use
+#   a wildcard to produce a different behavior.
+# Spaces are wildcards for any single non-alphanumberical character.
+# There is no way to escape a wildcard.
+# The case is ignored.
+# Empty lines are ignored.
+# N.B: This is YAML, so trailing whitespaces on either sides are ignored
+
+- america*   :  amareica*
+- anybody    :  anypony
+- anyone     :  anypony
+- anybody's  :  anypony's
+- anyone's   :  anypony's
+
+- baby*         :  foal*
+- baby-minder*  :  foalsitter*
+- boyfriend*    :  boyfriend*
+- boy*          :  colt*
+- bro fist      :  bro hoof
+- bro-fist      :  bro-hoof
+- brofist       :  brohoof
+- bro fists     :  bro hooves
+- bro-fists     :  bro-hooves
+- brofists      :  brohooves
+- butthurt      :  flankhurt
+- butthurt      :  saddle-sore
+
+- capslock    :  royal canterlot voice
+- caps lock   :  royal canterlot voice
+- chickenpox  :  ponypox
+- child*      :  foal*
+- children*   :  foals*
+- cowboy*     :  cowpony*
+- cowgirl*    :  cowpony*
+
+- doctor who  :  doctor whooves
+- dollar*     :  bit*
+- dr who      :  dr whooves
+- dubstep*    :  dubtrot*
+
+- everybody    :  everypony
+- everyone     :  everypony
+- everybody's  :  everypony's
+- everyone's   :  everypony's
+
+- facepalm           :  facehoof
+- facepalms          :  facehooves
+- feet*              :  hooves*
+- folks              :  foalks
+- fool*              :  foal*
+- foot*              :  hoof*
+- for heaven's sake  :  for pony's sake
+
+- gentlemen    :  gentlecolts
+- gentleman    :  gentlecolt
+- gentlemen's  :  gentlecolts'
+- gentleman's  :  gentlecolt's
+- girls        :  fillies
+- girlfriend*  :  girlfriend*
+- girl*        :  filly*
+- god          :  celestia
+- guy*         :  stallion*
+
+- halloween    :  nightmare night
+- halloween's  :  nightmare night's
+- hair*        :  mane*
+- hands        :  hooves
+- hand*        :  hoof*
+- hey          :  hay
+- high fiv*    :  hoof fiv*
+- high-fiv*    :  hoof-fiv*
+- human        :  pony
+- humans       :  ponies
+- human's      :  pony's
+- humans'      :  ponies'
+- horse        :  pony
+- horses       :  ponies
+- horse's      :  pony's
+- horses'      :  ponies'
+
+- ladies                :  fillies
+- ladies'               :  fillies'
+- lady                  :  filly
+- lady's                :  filly's
+- lightning conductor*  :  magical lightning rod*
+
+- main        :  mane
+- mailman     :  mailpony
+- man         :  stallion
+- man's       :  stallion's
+- man up      :  pony up
+- mania*      :  mane-ia*
+- manning up  :  ponying up
+- manned up   :  ponied up
+- man-up      :  pony-up
+- manhattan*  :  manehattan*
+- marathon*   :  mareathon*
+- men         :  stallions
+- men's       :  stallions'
+- miracle*    :  mareacle*
+- money*      :  bits*
+
+- nay*         :  neigh*
+- nobody       :  nopony
+- nobody's     :  nopony's
+- no one       :  nopony
+- no one's     :  nopony's
+- no-one       :  nopony
+- no-one's     :  nopony's
+- noone        :  nopony
+- noone's      :  nopony's
+- nottingham*  :  trottingham*
+
+- old-timer  :  old-trotter
+
+- q&a  :  q&neigh
+
+- people*        :  ponies*
+- person*        :  pony*
+- persons*       :  ponies*
+- pinky promis*  :  pinkie promis*
+- pinky promis*  :  pinkie pie promis*
+- pinky swear*   :  pinkie swear*
+- pinky swear*   :  pinkie pie swear*
+- philadelphia*  :  fillydelphia*
+
+- saudi arabia*  :  saddle arabia*
+- seahorse       :  seapony
+- seahorse's     :  seapony's
+- seahorses      :  seaponies
+- seahorses'     :  seaponies'
+- snowman        :  snowpony
+- somebody       :  somepony
+- somebody's     :  somepony's
+- someone        :  somepony
+- someone's      :  somepony's
+- stalingrad*    :  stalliongrad*
+- step*          :  trot*
+- stockholm      :  trotholm
+- sure as hell   :  sure as hay
+
+- tattoo*     :  cutie mark*
+- the heck    :  the hay
+- the hell    :  the hoof
+- the world*  :  equestria*
+- troll*      :  parasprite*
+
+- valentine's day     :  hearts and hooves day
+- valentine's day's   :  hearts and hooves day's
+- victoria's secret*  :  rarity's secret*
+
+- woman          :  mare
+- woman's        :  mare's
+- women          :  mares
+- women's        :  mares'
+- world record*  :  pony record*
+- walk*          :  saunter*

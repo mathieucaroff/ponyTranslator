@@ -1,0 +1,17 @@
+{
+  "name": "pony-translator",
+  "version": "1.0.0",
+  "description": "Ponify and deponify texts",
+  "main": "dist/ponyTranslator.js",
+  "types": "dist/ponyTranslator.d.ts",
+  "repository": "git@github.com:mathieucaroff/ponypipe.git",
+  "author": "Mathieu CAROFF <mathieu.caroff@free.fr>",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.5",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.6.3"
+  }
+}

@@ -1,11 +1,6 @@
-# Creaturepipe
+# PonyTranslator
 
-Allow ponification and deponification of a text.
-A Javascript rewrite of [ponypipe](https://github.com/maandree/ponypipe)
-
-##
-
-ok
+Allow ponification and deponification of a text or a stream of text. This is a JS (TypeScript) rewrite of [ponypipe](https://github.com/maandree/ponypipe)
 
 ## License
 

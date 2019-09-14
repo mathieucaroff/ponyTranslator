@@ -40,7 +40,7 @@ export let createStreamTranslator = ({
    }
 
    /**
-    * Given a text, add it to the buffer and tranlate the buffer to the
+    * Given a text, add it to the buffer and translate the buffer to the
     * output as much as allowed by the rules matching the buffer
     */
    let processText = (text: string) => {

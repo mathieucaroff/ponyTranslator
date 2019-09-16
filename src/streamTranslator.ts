@@ -1,5 +1,5 @@
-import { Rule, Callback, Lemma } from './interface'
-import { createWord } from './util/word'
+import { Rule, Callback, Lemma } from './interface.js'
+import { createWord } from './util/word.js'
 
 export interface StreamTranslatorParam {
    direction?: 'forward' | 'backward'
@@ -80,7 +80,7 @@ export let createStreamTranslator = ({
     * @param text string to be split
     */
    let splitText = (text: string): Lemma[] => {
-      let splitArr = text.split(/([ \t\n])/g) || []
+      let splitArr = text.split(/([ \t\n]|\b)/g) || []
       let parts: Lemma[] = []
       for (let k = 0; k < splitArr.length; k += 2) {
          let lemma = {

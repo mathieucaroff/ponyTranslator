@@ -1,9 +1,9 @@
-import { Rule } from './interface'
-import { parseRuleText } from './parseRule'
-import { createStreamTranslator } from './streamTranslator'
+import { Rule } from './interface.js'
+import { parseRuleText } from './parseRule.js'
+import { createStreamTranslator } from './streamTranslator.js'
 
 let getText: () => Promise<string>
-if (require) {
+if (!window) {
    getText = async () => {
       let {
          promises: { readFile },
@@ -13,8 +13,8 @@ if (require) {
    }
 } else {
    getText = async () => {
-      let connection = await fetch('./pony.rule.yml')
-      let ruleText = await connection.text()
+      let response = await fetch('.../../pony.rule.yml')
+      let ruleText = await response.text()
       return ruleText
    }
 }
@@ -34,7 +34,7 @@ export interface PonyTranslatorParam {
    ruleGetter?: () => Promise<Rule[]>
 }
 
-export let createPonyTranslator = async (param: PonyTranslatorParam) => {
+export let createPonyTranslator = async (param: PonyTranslatorParam = {}) => {
    let { direction, ruleGetter = getRuleArr } = param
 
    let ruleArr = await ruleGetter()

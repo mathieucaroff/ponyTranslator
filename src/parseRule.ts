@@ -1,4 +1,4 @@
-import { Rule, Err } from './interface'
+import { Rule, Err } from './interface.js'
 
 export let parseRuleText = (ruleText: string): Rule[] | Err => {
    let isHeader = (text) => text.match(/^-{3,}$|^%YAML [0-9]/)

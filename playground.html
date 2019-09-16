@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=800, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>PonyTranslator Playground</title>
+</head>
+
+<body>
+<style>
+*, *:before, *:after  {
+   border-collapse: collapse;
+   border-spacing: 0;
+   border: 0;
+   box-sizing: border-box;
+   font-size: 100%;
+   font-weight: normal;
+   height: auto;
+   list-style: none;
+   margin: 0;
+   max-width: 100%;
+   padding: 0;
+   padding: 0;
+   text-align: left;
+}
+</style>
+
+<style>
+.absolute {
+   position: absolute;
+}
+
+.disable {
+   display: none;
+}
+
+.lighter20 {
+   filter: brightness(2) contrast(0.5);
+}
+
+.lighter40 {
+   filter: brightness(4) contrast(0.25);
+}
+
+.lighter80 {
+   filter: brightness(8) contrast(0.125);
+}
+
+.lighter160 {
+   filter: brightness(16) contrast(0.0625);
+}
+
+.lighter320 {
+   filter: brightness(32) contrast(0.03125);
+}
+
+.max {
+   min-width: 100%;
+   min-height: 100%;
+}
+
+.maxHeight {
+   height: 100%;
+}
+
+.noresize {
+   resize: none;
+}
+
+.relative {
+   position: relative;
+}
+
+.transparent {
+   background: none;
+}
+
+.under {
+   z-index: -1;
+}
+
+.underunder {
+   z-index: -2;
+}
+</style>
+
+<style>
+* {
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+h1, h2, h3, h4 {
+   text-align: center;
+   font-size: 2rem;
+}
+
+html, body {
+   height: 100%;
+}
+
+.wrapper {
+   min-height: 100%;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-column-gap: 2px;
+   grid-template-rows: 3em 1fr 3em 1fr;
+   padding: 2px 1px;
+}
+
+.wrapper>* {
+   justify-self: stretch;
+}
+
+.wrapper .heading {
+   grid-column: span 2
+}
+
+.input, .output {
+   border-width: 2px;
+   padding: 2em;
+}
+
+.input {
+   border-style: inset;
+}
+.output {
+   border-style: outset;
+}
+
+.thumb {
+   max-height: 250px;
+   max-width: 250px;
+   /* height: 50%; */
+}
+
+
+/* https://stackoverflow.com/questions/43126465/gradient-opacity-on-borders-of-image */
+.gradiantBorders {
+   background:
+      linear-gradient(180deg,
+         rgba(255,255,255,1) 20%,
+         rgba(255,255,255,0) 30%,
+         rgba(255,255,255,0) 85%,
+         rgba(255,255,255,1) 90%
+      ),
+      linear-gradient(90deg,
+         rgba(255,255,255,1),
+         rgba(255,255,255,0) 15%,
+         rgba(255,255,255,0) 85%,
+         rgba(255,255,255,1) 95%
+      );
+}
+</style>
+
+<div class="wrapper">
+   <h2 class="heading">Ponification</h2>
+   <div class="relative">
+      <textarea
+         class="input forward max noresize transparent"
+      >Whatever someone wrote with their hands here.</textarea>
+      <img
+         class="absolute lighter20 thumb under"
+         alt= "human twilight with a book"
+         src="//derpicdn.net/img/2018/5/19/1736188/thumb.png"
+         style="bottom: 2px; left: 2px; height: 50%;"
+      />
+   </div>
+   <div class="relative">
+         <div class="output forward max"></div>
+      <div class="absolute under" style="bottom: -6px; right: 2px;">
+         <div class="gradiantBorders">
+            <img
+               class="relative under"
+               alt= "unicorn Twilight falling, along with many books"
+               src="//derpicdn.net/img/2018/5/10/1728768/thumb.png"
+            />
+         </div>
+      </div>
+   </div>
+
+   <h2 class="heading">Deponification</h2>
+   <div class="relative">
+      <textarea
+         class="input backward max noresize transparent"
+      >Whatever somepony wrote with their hooves here.</textarea>
+      <img
+         class="absolute thumb under"
+         alt= "happy pony Sunset Shimmer"
+         src="//derpicdn.net/img/2015/10/29/1011909/thumb.png"
+         style="bottom: 2px; right: 2px; height: 45%;"
+      />
+   </div>
+   <div class="relative">
+      <div class="output backward max"></div>
+      <img
+         class="absolute thumb under maxHeight"
+         alt= "human Sunset Shimmer holding a book and a pen"
+         src="//derpicdn.net/img/2016/5/19/1157606/thumb.png"
+         style="bottom: 2px; right: 6px; height: 55%;"
+      />
+   </div>
+</div>
+
+<script src="dist/playground.js" type="module"></script>
+</body>
+
+</html>

@@ -60,6 +60,9 @@
 - foot*              :  hoof*
 - for heaven's sake  :  for pony's sake
 
+- gallop       :  run
+- galloped     :  ran
+- galloping    :  running
 - gentlemen    :  gentlecolts
 - gentleman    :  gentlecolt
 - gentlemen's  :  gentlecolts'
@@ -70,22 +73,25 @@
 - god          :  celestia
 - guy*         :  stallion*
 
-- halloween    :  nightmare night
-- halloween's  :  nightmare night's
-- hair*        :  mane*
-- hands        :  hooves
-- hand*        :  hoof*
-- hey          :  hay
-- high fiv*    :  hoof fiv*
-- high-fiv*    :  hoof-fiv*
-- human        :  pony
-- humans       :  ponies
-- human's      :  pony's
-- humans'      :  ponies'
-- horse        :  pony
-- horses       :  ponies
-- horse's      :  pony's
-- horses'      :  ponies'
+- had galloped   :  had run
+- has galloped   :  has run
+- have galloped  :  have run
+- halloween      :  nightmare night
+- halloween's    :  nightmare night's
+- hair*          :  mane*
+- hands          :  hooves
+- hand*          :  hoof*
+- hey            :  hay
+- high fiv*      :  hoof fiv*
+- high-fiv*      :  hoof-fiv*
+- human          :  pony
+- humans         :  ponies
+- human's        :  pony's
+- humans'        :  ponies'
+- horse          :  pony
+- horses         :  ponies
+- horse's        :  pony's
+- horses'        :  ponies'
 
 - ladies                :  fillies
 - ladies'               :  fillies'

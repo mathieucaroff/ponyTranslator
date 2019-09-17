@@ -31,6 +31,7 @@
 - bro fists     :  bro hooves
 - bro-fists     :  bro-hooves
 - brofists      :  brohooves
+- butt          :  flank
 - butthurt      :  flankhurt
 - butthurt      :  saddle-sore
 
@@ -42,11 +43,13 @@
 - cowboy*     :  cowpony*
 - cowgirl*    :  cowpony*
 
+- dammit      :  dang it
 - doctor who  :  doctor whooves
 - dollar*     :  bit*
 - dr who      :  dr whooves
 - dubstep*    :  dubtrot*
 
+- earth        :  equestria
 - everybody    :  everypony
 - everyone     :  everypony
 - everybody's  :  everypony's
@@ -58,7 +61,8 @@
 - folks              :  foalks
 - fool*              :  foal*
 - foot*              :  hoof*
-- for heaven's sake  :  for pony's sake
+- for heaven's sake  :  for luna's sake
+- fuck               :  buck
 
 - gallop       :  run
 - galloped     :  ran
@@ -68,7 +72,7 @@
 - gentlemen's  :  gentlecolts'
 - gentleman's  :  gentlecolt's
 - girls        :  fillies
-- girlfriend*  :  girlfriend*
+- girlfriend*  :  marefriend*
 - girl*        :  filly*
 - god          :  celestia
 - guy*         :  stallion*
@@ -82,6 +86,7 @@
 - hands          :  hooves
 - hand*          :  hoof*
 - hey            :  hay
+- hell           :  tartarus
 - high fiv*      :  hoof fiv*
 - high-fiv*      :  hoof-fiv*
 - human          :  pony
@@ -93,10 +98,13 @@
 - horse's        :  pony's
 - horses'        :  ponies'
 
+- indiana jones  :  daring do
+
 - ladies                :  fillies
 - ladies'               :  fillies'
 - lady                  :  filly
 - lady's                :  filly's
+- las vegas             :  las pegasus
 - lightning conductor*  :  magical lightning rod*
 
 - main        :  mane
@@ -105,6 +113,7 @@
 - man's       :  stallion's
 - man up      :  pony up
 - mania*      :  mane-ia*
+- mankind     :  ponykind
 - manning up  :  ponying up
 - manned up   :  ponied up
 - man-up      :  pony-up
@@ -130,6 +139,7 @@
 
 - q&a  :  q&neigh
 
+- pen            :  quill
 - people*        :  ponies*
 - person*        :  pony*
 - persons*       :  ponies*
@@ -139,6 +149,7 @@
 - pinky swear*   :  pinkie pie swear*
 - philadelphia*  :  fillydelphia*
 
+- satan          :  sombra
 - saudi arabia*  :  saddle arabia*
 - seahorse       :  seapony
 - seahorse's     :  seapony's
@@ -154,16 +165,19 @@
 - stockholm      :  trotholm
 - sure as hell   :  sure as hay
 
-- tattoo*     :  cutie mark*
-- the heck    :  the hay
-- the hell    :  the hoof
-- the world*  :  equestria*
-- troll*      :  parasprite*
+- tattoo*         :  cutie mark*
+- thank goodness  :  thank celestia
+- the heck        :  the hay
+- the hell        :  the hoof
+- the world*      :  equestria*
+- troll*          :  parasprite*
 
 - valentine's day     :  hearts and hooves day
 - valentine's day's   :  hearts and hooves day's
 - victoria's secret*  :  rarity's secret*
 
+- what the fuck  :  what in tarnation
+- whore          :  whorse
 - woman          :  mare
 - woman's        :  mare's
 - women          :  mares

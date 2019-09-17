@@ -4,8 +4,18 @@ export let parseRuleText = (ruleText: string): Rule[] | Err => {
    let isHeader = (text) => text.match(/^-{3,}$|^%YAML [0-9]/)
    let hasContent = (text) => text.match(/^[ \t]*[^ \t#]/)
 
+   let hasNewline = (text) => text.match(/\n/)
+   let onlyCrlf = (text) => hasNewline(text) && !text.match(/[^\r]\n/)
+
+   if (onlyCrlf(ruleText)) {
+      console.warn(
+         'Rule file uses (untested) CRLF line endings. Please use LF line endings instead.',
+         new Error().stack,
+      )
+   }
+
    let ruleLineArr = ruleText
-      .split('\n')
+      .split(/\r?\n/)
       .map((text, k): [string, number] => [text, k])
       .filter(([text, k]) => hasContent(text) && !isHeader(text))
 
@@ -19,6 +29,7 @@ export let parseRuleText = (ruleText: string): Rule[] | Err => {
             ctx: {
                line_number: k,
                line,
+               ...(result.ctx || {}),
             },
          })
       } else {
@@ -53,8 +64,15 @@ export let parseRule = (line: string): Rule | Err => {
    let [entry, comment] = line.split(/[ \t]+(#.*)$/)
    let linePartArr = entry.split(':')
    if (linePartArr.length !== 2) {
-      return {
-         err: 'Cannot parse strings which contains colons themselves',
+      if (linePartArr.length < 2) {
+         return {
+            err: 'Line must contain one colon separating key from value',
+         }
+      } else {
+         return {
+            err: `Line must contain exactly one colon but it contains ${linePartArr.length -
+               1} of them.`,
+         }
       }
    } else {
       // Split-line match
@@ -67,6 +85,10 @@ export let parseRule = (line: string): Rule | Err => {
                ...(ma === null ? ['Cannot parse key side'] : []),
                ...(mb === null ? ['Cannot parse value side'] : []),
             ].join('; '),
+            ctx: {
+               ...(ma === null ? { a } : {}),
+               ...(mb === null ? { b } : {}),
+            },
          }
       }
       lef = ma[1] || interpretString(ma[3])
@@ -81,6 +103,7 @@ export let parseRule = (line: string): Rule | Err => {
    if (lef.split('*').length !== rig.split('*').length) {
       return {
          err: 'Unballanced number of asterisks "*"',
+         ctx: { lef, rig },
       }
    }
    return {

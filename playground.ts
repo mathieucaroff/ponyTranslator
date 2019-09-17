@@ -1,6 +1,7 @@
 import { soon } from './src/util/compose.js'
 
 import { createPonyTranslator } from './src/ponyTranslator.js'
+import { ifEnabled } from './src/util/ifEnabled.js'
 
 let clamp = (min, max?) => (value) => {
    if (max !== undefined && max !== null && value > max) {
@@ -44,25 +45,32 @@ let main = async () => {
 
 main()
 
-// // Discovery
-// let logKey = (ev) => {
-//    console.log({ key: ev.key })
-// }
-// document.documentElement.addEventListener('keydown', logKey)
-// document.documentElement.addEventListener('keyup', logKey)
-
 // Develop
-let lastContent = ''
-let reload = async () => {
-   setTimeout(reload, 500)
-   let resp = await fetch('./playground.html')
-   let content = await resp.text()
-   resp = await fetch('./dist/playground.js')
-   content += await resp.text()
-   if (lastContent && content !== lastContent) {
-      location.reload()
-   } else {
-      lastContent = content
-   }
+let logKey = (ev) => {
+   console.log({ key: ev.key, ev })
 }
-reload()
+
+ifEnabled('keydown').do(() => {
+   document.documentElement.addEventListener('keydown', logKey)
+})
+
+ifEnabled('keyup').do(() => {
+   document.documentElement.addEventListener('keyup', logKey)
+})
+
+ifEnabled('autoreload').do(() => {
+   let lastContent = ''
+   let reload = async () => {
+      setTimeout(reload, 500)
+      let resp = await fetch('./playground.html')
+      let content = await resp.text()
+      resp = await fetch('./dist/playground.js')
+      content += await resp.text()
+      if (lastContent && content !== lastContent) {
+         location.reload()
+      } else {
+         lastContent = content
+      }
+   }
+   reload()
+})

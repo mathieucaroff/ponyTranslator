@@ -6,10 +6,17 @@ Allow ponification and deponification of a text or a stream of text. This is a J
 
 ```bash
 yarn install
-yarn parcel playground.html
+yarn tsc
+python -m http.server --bind localhost 2019
 ```
 
-You should see something like `Server running at http://localhost:1234`.
+You should see something like the following:
+
+```txt
+Serving HTTP on 127.0.0.1 port 2019 (http://127.0.0.1:2019/) ...
+```
+
+Then go to http://localhost:2019/playground.html.
 
 ## License
 

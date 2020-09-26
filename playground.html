@@ -36,26 +36,6 @@
    display: none;
 }
 
-.lighter20 {
-   filter: brightness(2) contrast(0.5);
-}
-
-.lighter40 {
-   filter: brightness(4) contrast(0.25);
-}
-
-.lighter80 {
-   filter: brightness(8) contrast(0.125);
-}
-
-.lighter160 {
-   filter: brightness(16) contrast(0.0625);
-}
-
-.lighter320 {
-   filter: brightness(32) contrast(0.03125);
-}
-
 .max {
    min-width: 100%;
    min-height: 100%;
@@ -132,7 +112,6 @@ html, body {
 .thumb {
    max-height: 250px;
    max-width: 250px;
-   /* height: 50%; */
 }
 
 
@@ -158,23 +137,27 @@ html, body {
    <h2 class="heading">Ponification</h2>
    <div class="relative">
       <textarea
-         class="input forward max noresize transparent"
+         class="input forward max noresize transparent jsForward jsInput"
       >Whatever someone wrote with their hands here.</textarea>
       <img
-         class="absolute lighter20 thumb under"
+         class="absolute thumb under"
          alt= "human twilight with a book"
          src="//derpicdn.net/img/2018/5/19/1736188/thumb.png"
          style="bottom: 2px; left: 2px; height: 50%;"
       />
    </div>
-   <div class="relative">
-         <div class="output forward max"></div>
-      <div class="absolute under" style="bottom: -6px; right: 2px;">
-         <div class="gradiantBorders">
+   <div class="relative" xCssAssist="width">
+      <div class="output forward max"><div class="jsForward jsOutput"></div></div>
+      <div
+         class="absolute under xWidthDestination"
+         style="bottom: -6px; right: 2px; height: 55%"
+      >
+         <div class="gradiantBorders" style="height: 100%">
             <img
-               class="relative under"
+               class="relative under xWidthSource"
                alt= "unicorn Twilight falling, along with many books"
                src="//derpicdn.net/img/2018/5/10/1728768/thumb.png"
+               style="height: 100%"
             />
          </div>
       </div>
@@ -183,7 +166,7 @@ html, body {
    <h2 class="heading">Deponification</h2>
    <div class="relative">
       <textarea
-         class="input backward max noresize transparent"
+         class="input backward max noresize transparent jsBackward jsInput"
       >Whatever somepony wrote with their hooves here.</textarea>
       <img
          class="absolute thumb under"
@@ -193,7 +176,7 @@ html, body {
       />
    </div>
    <div class="relative">
-      <div class="output backward max"></div>
+      <div class="output max"><div class="jsBackward jsOutput"></div></div>
       <img
          class="absolute thumb under maxHeight"
          alt= "human Sunset Shimmer holding a book and a pen"

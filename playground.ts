@@ -14,12 +14,43 @@ let clamp = (min, max?) => (value) => {
 }
 
 let main = async () => {
-   ;['forward' as const, 'backward' as const].forEach(async (direction) => {
+   // xCssAssist
+   let xCssAssistArr = Array.from(
+      document.querySelectorAll<HTMLElement>('[xCssAssist]'),
+   )
+   let resize = () => {
+      xCssAssistArr.forEach(async (el) => {
+         let attrValue = el.getAttribute('xCssAssist')
+         if (attrValue === null) {
+            throw 'xCssAssist != xCssAssist - go figure --'
+         } else if (attrValue === 'width') {
+            let source = el.querySelector<HTMLElement>('.xWidthSource')
+            let destination = el.querySelector<HTMLElement>(
+               '.xWidthDestination',
+            )
+            if (source === null) {
+               throw `missing element with xWidthSource class`
+            } else if (destination === null) {
+               throw `missing element with xWidthDestination class`
+            }
+            destination.style.width = ''
+            await new Promise((resolve) => setTimeout(resolve, 900))
+            destination.style.width = `${source.clientWidth}px`
+         } else {
+            throw `unhandled xCssAssist attrValue ${attrValue}`
+         }
+      })
+   }
+   window.addEventListener('resize', resize)
+   resize()
+
+   // Translation
+   ;['jsForward' as const, 'jsBackward' as const].forEach(async (direction) => {
       let input = document.querySelector<HTMLTextAreaElement>(
-         `.${direction}.input`,
+         `.${direction}.jsInput`,
       )!
       let output = document.querySelector<HTMLTextAreaElement>(
-         `.${direction}.output`,
+         `.${direction}.jsOutput`,
       )!
 
       // Verification
@@ -34,7 +65,13 @@ let main = async () => {
          throw `could not acquire ${missing} element(s)`
       }
 
-      let ponyTranslator = await createPonyTranslator({ direction })
+      let ponyTranslator = await createPonyTranslator({
+         direction: {
+            jsForward: 'forward' as const,
+            jsBackward: 'backward' as const,
+         }[direction],
+      })
+
       let update = () => {
          output.textContent = ponyTranslator.justTranslate(input.value || '')
       }

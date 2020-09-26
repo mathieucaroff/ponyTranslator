@@ -10,17 +10,11 @@ export let createWord = (word: string) => {
       } else if (model.match(/^[^A-Za-z]*[^A-Z]/)) {
          return createWord(word.toLowerCase())
       } else if (!model) {
-         throw {
-            err: 'Got empty model',
-         }
+         throw new Error('Got empty model')
       } else if (!model.match(/[A-Za-z]/)) {
-         throw {
-            err: 'Model must contain at least one letter',
-         }
+         throw new Error('Model must contain at least one letter')
       } else {
-         throw {
-            err: 'Model case could not be identified',
-         }
+         throw new Error('Model case could not be identified')
       }
    }
    return {

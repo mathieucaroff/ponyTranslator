@@ -2,9 +2,9 @@ import { Rule } from './interface.js'
 import { parseRuleText } from './parseRule.js'
 import { createStreamTranslator } from './streamTranslator.js'
 
-let getText: () => Promise<string>
+let getRuleText: () => Promise<string>
 if (!window) {
-   getText = async () => {
+   getRuleText = async () => {
       let {
          promises: { readFile },
       } = await import('fs')
@@ -12,7 +12,7 @@ if (!window) {
       return ruleText
    }
 } else {
-   getText = async () => {
+   getRuleText = async () => {
       let response = await fetch('.../../pony.rule.yml')
       let ruleText = await response.text()
       return ruleText
@@ -20,8 +20,8 @@ if (!window) {
 }
 
 export let getRuleArr = async () => {
-   let text = await getText()
-   let res = parseRuleText(text)
+   let ruleText = await getRuleText()
+   let res = parseRuleText(ruleText)
    if ('err' in res) {
       console.error(res)
       throw res

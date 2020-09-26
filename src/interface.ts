@@ -2,12 +2,12 @@ export type Callback<T> = (data: T) => void
 
 /**
  * An Err is a custom Error object that can be returned by a function.
- * This method prefered to throwing because JS error handling is very
- * bad.
+ * This method is prefered to throwing because JS has very poor error
+ * handling.
  */
 export interface Err {
    err: string
-   ctx?: unknown
+   ctx?: Record<string, unknown>
 }
 
 /**

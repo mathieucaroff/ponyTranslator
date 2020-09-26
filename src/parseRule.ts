@@ -14,14 +14,12 @@ export let parseRuleText = (ruleText: string): Rule[] | Err => {
       )
    }
 
-   let ruleLineArr = ruleText
-      .split(/\r?\n/)
-      .map((text, k): [string, number] => [text, k])
-      .filter(([text, k]) => hasContent(text) && !isHeader(text))
-
    let errorArr: Err[] = []
    let ruleArr: Rule[] = []
-   ruleLineArr.forEach(([line, k]) => {
+   ruleText.split(/\r?\n/).forEach(([line, k]) => {
+      if (!hasContent(line) || isHeader(line)) {
+         return
+      }
       let result = parseRule(line)
       if ('err' in result) {
          errorArr.push({
@@ -70,8 +68,9 @@ export let parseRule = (line: string): Rule | Err => {
          }
       } else {
          return {
-            err: `Line must contain exactly one colon but it contains ${linePartArr.length -
-               1} of them.`,
+            err: `Line must contain exactly one colon but it contains ${
+               linePartArr.length - 1
+            } of them.`,
          }
       }
    } else {
@@ -114,9 +113,9 @@ export let parseRule = (line: string): Rule | Err => {
 
 export let interpretString = (str: string) => {
    let res = str
-      .replace('\\t', '\t')
-      .replace('\\n', '\n')
-      .replace('\\r', '\r')
+      .replace(/\\t/g, '\t')
+      .replace(/\\n/g, '\n')
+      .replace(/\\r/g, '\r')
       .replace(/\\(.)/g, '$1')
    return res
 }

@@ -1,7 +1,8 @@
-import { soon } from './src/util/compose.js'
+import { soon } from './src/util/compose'
 
-import { createPonyTranslator } from './src/ponyTranslator.js'
-import { ifEnabled } from './src/util/ifEnabled.js'
+import { createPonyTranslator } from './src/ponyTranslator'
+import { ifEnabled } from './src/util/ifEnabled'
+import { capitalize } from './src/util/capitalize'
 
 let clamp = (min, max?) => (value) => {
    if (max !== undefined && max !== null && value > max) {
@@ -25,9 +26,8 @@ let main = async () => {
             throw 'xCssAssist != xCssAssist - go figure --'
          } else if (attrValue === 'width') {
             let source = el.querySelector<HTMLElement>('.xWidthSource')
-            let destination = el.querySelector<HTMLElement>(
-               '.xWidthDestination',
-            )
+            let destination =
+               el.querySelector<HTMLElement>('.xWidthDestination')
             if (source === null) {
                throw `missing element with xWidthSource class`
             } else if (destination === null) {
@@ -45,32 +45,15 @@ let main = async () => {
    resize()
 
    // Translation
-   ;['jsForward' as const, 'jsBackward' as const].forEach(async (direction) => {
+   ;['forward' as const, 'backward' as const].forEach(async (direction) => {
       let input = document.querySelector<HTMLTextAreaElement>(
-         `.${direction}.jsInput`,
+         `.js${capitalize(direction)}.jsInput`,
       )!
       let output = document.querySelector<HTMLTextAreaElement>(
-         `.${direction}.jsOutput`,
+         `.js${capitalize(direction)}.jsOutput`,
       )!
 
-      // Verification
-      let missing: string[] = []
-      if (input === null) {
-         missing.push('input')
-      }
-      if (output === null) {
-         missing.push('output')
-      }
-      if (missing.length > 0) {
-         throw `could not acquire ${missing} element(s)`
-      }
-
-      let ponyTranslator = await createPonyTranslator({
-         direction: {
-            jsForward: 'forward' as const,
-            jsBackward: 'backward' as const,
-         }[direction],
-      })
+      let ponyTranslator = createPonyTranslator({ direction })
 
       let update = () => {
          output.textContent = ponyTranslator.justTranslate(input.value || '')
@@ -101,7 +84,7 @@ ifEnabled('autoreload').do(() => {
       setTimeout(reload, 500)
       let resp = await fetch('./playground.html')
       let content = await resp.text()
-      resp = await fetch('./dist/playground.js')
+      resp = await fetch('./dist/playground')
       content += await resp.text()
       if (lastContent && content !== lastContent) {
          location.reload()

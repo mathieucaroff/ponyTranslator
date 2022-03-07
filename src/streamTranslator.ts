@@ -1,5 +1,5 @@
-import { Rule, Callback, Lemma } from './interface.js'
-import { createWord } from './util/word.js'
+import { Rule, Callback, Lemma } from './interface'
+import { createWord } from './util/word'
 
 export interface StreamTranslatorParam {
    direction?: 'forward' | 'backward'
@@ -56,9 +56,7 @@ export let createStreamTranslator = ({
          let token = word.toLowerCase()
          ruleList.some(({ lef, rig }) => {
             if (token === lef) {
-               newWord = createWord(rig)
-                  .withCaseOf(word)
-                  .result()
+               newWord = createWord(rig).withCaseOf(word).result()
                return true
             }
          })

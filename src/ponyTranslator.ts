@@ -1,43 +1,24 @@
-import { Rule } from './interface.js'
-import { parseRuleText } from './parseRule.js'
-import { createStreamTranslator } from './streamTranslator.js'
-
-let getRuleText: () => Promise<string>
-if (!window) {
-   getRuleText = async () => {
-      let {
-         promises: { readFile },
-      } = await import('fs')
-      let ruleText = await readFile(`${__dirname}/../pony.rule.yml`, 'utf-8')
-      return ruleText
-   }
-} else {
-   getRuleText = async () => {
-      let response = await fetch('.../../pony.rule.yml')
-      let ruleText = await response.text()
-      return ruleText
-   }
-}
-
-export let getRuleArr = async () => {
-   let ruleText = await getRuleText()
-   let res = parseRuleText(ruleText)
-   if ('err' in res) {
-      console.error(res)
-      throw res
-   }
-   return res
-}
+import { Rule } from './interface'
+import { createStreamTranslator } from './streamTranslator'
+import ruleData from '../pony.rule.yml'
 
 export interface PonyTranslatorParam {
    direction?: 'forward' | 'backward'
-   ruleGetter?: () => Promise<Rule[]>
+   ruleGetter?: () => Rule[]
 }
 
-export let createPonyTranslator = async (param: PonyTranslatorParam = {}) => {
-   let { direction, ruleGetter = getRuleArr } = param
+function getRuleArr() {
+   return ruleData.map((entry): Rule => {
+      let [lef, rig] = Object.entries(entry)[0] as [string, string]
+      return { lef, rig }
+   })
+}
 
-   let ruleArr = await ruleGetter()
+export let createPonyTranslator = (param: PonyTranslatorParam = {}) => {
+   let { direction, ruleGetter = getRuleArr } = param
+   ruleData
+
+   let ruleArr = ruleGetter()
 
    return createStreamTranslator({
       direction,

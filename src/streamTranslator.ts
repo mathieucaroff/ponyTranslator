@@ -181,7 +181,7 @@ export let createStreamTranslator = ({
     * @param text string to be split
     */
    function splitText(text: string): Lemma[] {
-      let splitArr = text.split(/([ \t\n])/g) || []
+      let splitArr = text.split(/([ \t\n,;.?!])/g) || []
       let parts: Lemma[] = []
       for (let k = 0; k < splitArr.length; k += 2) {
          let lemma = {

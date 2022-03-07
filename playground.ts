@@ -3,18 +3,16 @@ import { soon } from './src/util/compose'
 import { createPonyTranslator } from './src/ponyTranslator'
 import { ifEnabled } from './src/util/ifEnabled'
 import { capitalize } from './src/util/capitalize'
+import { githubCornerHTML } from './src/lib/githubCorner'
 
-let clamp = (min, max?) => (value) => {
-   if (max !== undefined && max !== null && value > max) {
-      value = max
-   }
-   if (min !== undefined && min !== null && value < min) {
-      value = min
-   }
-   return value
-}
+import { repository, version } from './package.json'
 
 let main = async () => {
+   let wrapperDiv = document.getElementsByClassName('wrapper')[0]
+   let cornerDiv = document.createElement('div')
+   cornerDiv.innerHTML = githubCornerHTML(repository, version)
+   wrapperDiv.appendChild(cornerDiv)
+
    // xCssAssist
    let xCssAssistArr = Array.from(
       document.querySelectorAll<HTMLElement>('[xCssAssist]'),

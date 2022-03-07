@@ -2,7 +2,7 @@
   "name": "pony-translator",
   "version": "1.0.0",
   "description": "Ponify and deponify texts",
-  "repository": "git@github.com:mathieucaroff/ponypipe.git",
+  "repository": "https://github.com/ponydevs/ponyTranslator",
   "author": "Mathieu CAROFF <mathieu.caroff@free.fr>",
   "license": "CC0-1.0",
   "source": "playground.html",

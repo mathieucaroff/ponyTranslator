@@ -4,13 +4,11 @@
 # -- all other characters are word-breaking.
 # The yaml must consist only of string-string key-value pairs. Having
 #   any structured value or structured key renders the file invalid.
-# Asterisks must be found in equal numbers on both sides of the rule and
-#   are wildcards for 0 or more word-continuing characters. Having
-#   unbalanced wildcards renders the rule file invalid.
-# Entries are matched word-breaking characters on both ends. You can use
-#   a wildcard to produce a different behavior.
+# Asterisks must be found on both sides of the rule and
+#   are wildcards for 0 or more word-continuing characters at the end
+#   of the entry. Entries are matched word-breaking characters on both
+#   ends. You can use a wildcard to produce a different behavior.
 # Spaces are wildcards for any single non-alphanumberical character.
-# There is no way to escape a wildcard.
 # The case is ignored.
 # Empty lines are ignored.
 # N.B: This is YAML, so trailing whitespaces on either sides are ignored

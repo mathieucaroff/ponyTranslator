@@ -4,6 +4,7 @@
         "target": "es2019",
         "module": "esnext",
         "moduleResolution": "node",
+        "resolveJsonModule": true,
         "declaration": true,
         "declarationMap": true,
         "sourceMap": true,

@@ -37,7 +37,10 @@ describe('streamTranslator', () => {
    })
    it('Does not alter spaces', () => {
       let streamTranslator = createStreamTranslator({
-         ruleArr: [{ lef: 'a', rig: 'z' }, { lef: 'b', rig: 'y' }],
+         ruleArr: [
+            { lef: 'a', rig: 'z' },
+            { lef: 'b', rig: 'y' },
+         ],
       })
 
       let text = `\ta b\tc\nd\re  f\t\tg\n\nh\r\ri \tj\t\nk\n\rl\r\n`
@@ -47,12 +50,28 @@ describe('streamTranslator', () => {
    })
    it('Does not alter punctuation', () => {
       let streamTranslator = createStreamTranslator({
-         ruleArr: [{ lef: 'a', rig: 'z' }, { lef: 'b', rig: 'y' }],
+         ruleArr: [
+            { lef: 'a', rig: 'z' },
+            { lef: 'b', rig: 'y' },
+         ],
       })
 
       let text = `q!w@ a b d#g$ j%y ^p& u*l( ;)[-] =s'e/x .c,v!`
       let resu = `q!w@ z y d#g$ j%y ^p& u*l( ;)[-] =s'e/x .c,v!`
 
       expect(streamTranslator.justTranslate(text)).toBe(resu)
+   })
+   it('Prefers longer translations over short ones', () => {
+      let streamTranslator = createStreamTranslator({
+         ruleArr: [
+            { lef: 'a', rig: 'z' },
+            { lef: 'b', rig: 'y' },
+            { lef: 'a b', rig: 'c d' }, // this rule is shadowed
+         ],
+      })
+
+      expect(streamTranslator.justTranslate(`r b a`)).toBe(`r y z`)
+      expect(streamTranslator.justTranslate(`a b`)).toBe(`z y`)
+      expect(streamTranslator.justTranslate(`b a a b`)).toBe(`y z z y`)
    })
 })

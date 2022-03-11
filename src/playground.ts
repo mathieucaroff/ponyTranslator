@@ -1,11 +1,11 @@
-import { soon } from './src/util/compose'
+import { soon } from './util/compose'
 
-import { createPonyTranslator } from './src/ponyTranslator'
-import { ifEnabled } from './src/util/ifEnabled'
-import { capitalize } from './src/util/capitalize'
-import { githubCornerHTML } from './src/lib/githubCorner'
+import { createPonyTranslator } from './ponyTranslator'
+import { ifEnabled } from './util/ifEnabled'
+import { capitalize } from './util/capitalize'
+import { githubCornerHTML } from './lib/githubCorner'
 
-import { repository, version } from './package.json'
+import { repository, version } from '../package.json'
 
 let main = async () => {
    let wrapperDiv = document.getElementsByClassName('wrapper')[0]

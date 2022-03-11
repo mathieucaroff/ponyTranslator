@@ -2,12 +2,12 @@
   "name": "pony-translator",
   "version": "1.0.0",
   "description": "Ponify and deponify texts",
-  "repository": "https://github.com/ponydevs/ponyTranslator",
+  "repository": "https://github.com/mathieucaroff/ponyTranslator",
   "author": "Mathieu CAROFF <mathieu.caroff@free.fr>",
   "license": "CC0-1.0",
-  "source": "playground.html",
+  "source": "src/ponyTranslator.html",
   "scripts": {
-    "build": "parcel build",
+    "build": "parcel build --public-url ponyTranslator.d",
     "serve": "parcel",
     "test": "jest"
   },
